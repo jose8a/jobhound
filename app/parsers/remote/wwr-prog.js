@@ -14,7 +14,7 @@ let jobProperties = {
   source: "wwr",
   sourceType: "primary-source",
   baseUrl: "https://weworkremotely.com",
-  tags: "customer,support,happiness",
+  tags: "programming,remote",
   description: "",
   rating: "",
   primeRole: "",

@@ -26,8 +26,8 @@ let jobProperties = {
   isTemp: ""
 };
 
-// 1. create wwr-prog-specific properties parser
-let wwrProgPropertiesExtractor = {
+// 1. create wwr-cust-specific properties parser
+let wwrCustPropertiesExtractor = {
   extractTitle: function(itemContainer, linkItem) {
     return linkItem.find('.title').text().trim();
   },
@@ -47,28 +47,28 @@ let wwrProgPropertiesExtractor = {
   }
 }
 
-// 2. create a wwrProgItemParser from the generic newsItemParser in
-//    order to assign wwr-prog-specific properties to it
-let wwrProgItemParser = Object.create(newsItemParser);
-wwrProgItemParser.init(parserOptions, jobProperties);
+// 2. create a wwrCustItemParser from the generic newsItemParser in
+//    order to assign wwr-cust-specific properties to it
+let wwrCustItemParser = Object.create(newsItemParser);
+wwrCustItemParser.init(parserOptions, jobProperties);
 
-// 3. merge both objects into the wwrProgItemParser object using
+// 3. merge both objects into the wwrCustItemParser object using
 //    Object.assign(..)
-wwrProgItemParser = Object.assign(wwrProgItemParser, wwrProgPropertiesExtractor)
+wwrCustItemParser = Object.assign(wwrCustItemParser, wwrCustPropertiesExtractor)
 
-// 4. create a wwrProgSiteParser to handle and orchestrate the actual parsing
+// 4. create a wwrCustSiteParser to handle and orchestrate the actual parsing
 //    on the site
-let wwrProgSiteParser = Object.create(collectionParser);
+let wwrCustSiteParser = Object.create(collectionParser);
 
 // 5. use the parser in conjunction with cheerio and request/request to
 //    retrieve stories from the site
 let fetchWWRCustJobs = function(req, res) {
   request(wwr, function (error, response, html) {
     if (!error && response.statusCode == 200) {
-      wwrProgSiteParser.init(html, wwrProgItemParser);
-      wwrProgSiteParser.parseCollection();
+      wwrCustSiteParser.init(html, wwrCustItemParser);
+      wwrCustSiteParser.parseCollection();
 
-      res.status(200).json(wwrProgSiteParser.getParsedItems());
+      res.status(200).json(wwrCustSiteParser.getParsedItems());
     }
   });
 };
