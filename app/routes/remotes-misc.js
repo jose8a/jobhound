@@ -12,7 +12,7 @@
 let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
 let fetchWWRCustJobs = require("../parsers/remote/wwr-cust");
 // --- let fetchWFHJobs = require("../parsers/remote/wfh");
-// --- let fetchSOVJobs = require("../parsers/remote/sov-rem");
+let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
 // --- let fetchGHubJobs = require("../parsers/remote/ghub-rem");
 // --- let fetchSpressoJobs = require("../parsers/remote/spresso");
 
@@ -29,11 +29,11 @@ module.exports = function(router) {
     res.status(200).json({sources: ['sov', 'wwr', 'wfh', 'ghub', 'spresso']});
   });
 
-  // get list of all remote jobs available on Stack Overflow
-  router.get('/sov', (req, res, next) => {
-    console.log("Stack Overflow Jobs - path: '/remote/sov'");
-    res.status(200).send('TODO: Endpoint remote/sov not yet implemented');
-    // --- fetchSOVJobs(req, res);
+  // get list of all remote javascript jobs available on Stack Overflow
+  router.get('/sov-js', (req, res, next) => {
+    console.log("Stack Overflow Jobs - path: '/remote/sov-js'");
+    // --- res.status(200).send('TODO: Endpoint remote/sov-js not yet implemented');
+    fetchSOVJSJobs(req, res);
   });
 
   // get list of all remote programming-jobs available on WWR
