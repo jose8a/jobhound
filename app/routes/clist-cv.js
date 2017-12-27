@@ -12,7 +12,7 @@
 let fetchBakEngJobs = require("../parsers/remote/clist-bak-eng");
 let fetchBakSofJobs = require("../parsers/remote/clist-bak-sof");
 let fetchBakWebJobs = require("../parsers/remote/clist-bak-web");
-let fetchFreEngJobs = require("../parsers/clist-local/clist-fre-eng");
+let fetchFreEngJobs = require("../parsers/remote/clist-fre-eng");
 // --- let fetchFreSofJobs = require("../parsers/clist-local/clist-fre-sof");
 // --- let fetchFreWebJobs = require("../parsers/clist-local/clist-fre-web");
 
