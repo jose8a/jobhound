@@ -50,8 +50,8 @@ module.exports = function(router) {
   // get list of all Fresno engineering jobs available on CList
   router.get('/fre-eng', (req, res, next) => {
     console.log("CList Fresno Eng Jobs - path: '/clist-local/fre-eng'");
-    res.status(200).send('TODO: Endpoint clist-local/fre-eng not yet implemented');
-    // --- fetchFreEngJobs(req, res);
+    // --- res.status(200).send('TODO: Endpoint clist-local/fre-eng not yet implemented');
+    fetchFreEngJobs(req, res);
   });
 
   // get list of all Fresno software jobs available on CList
