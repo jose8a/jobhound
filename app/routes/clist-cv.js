@@ -10,7 +10,7 @@
 //
 // =================================================================
 let fetchBakEngJobs = require("../parsers/remote/clist-bak-eng");
-// --- let fetchBakSofJobs = require("../parsers/clist-local/clist-bak-sof");
+let fetchBakSofJobs = require("../parsers/remote/clist-bak-sof");
 // --- let fetchBakWebJobs = require("../parsers/clist-local/clist-bak-web");
 // --- let fetchFreEngJobs = require("../parsers/clist-local/clist-fre-eng");
 // --- let fetchFreSofJobs = require("../parsers/clist-local/clist-fre-sof");
@@ -32,15 +32,14 @@ module.exports = function(router) {
   // get list of all Bakersfield engineering jobs available on CList
   router.get('/bak-eng', (req, res, next) => {
     console.log("CList Bakersfield Eng Jobs - path: '/clist-local/bak-eng'");
-    // --- res.status(200).send('TODO: Endpoint clist-local/bak-eng not yet implemented');
     fetchBakEngJobs(req, res);
   });
 
   // get list of all Bakersfield software jobs available on CList
   router.get('/bak-sof', (req, res, next) => {
     console.log("CList Bakersfield SW Jobs - path: '/clist-local/bak-sof'");
-    res.status(200).send('TODO: Endpoint clist-local/bak-sof not yet implemented');
-    // --- fetchBakSofJobs(req, res);
+    // --- res.status(200).send('TODO: Endpoint clist-local/bak-sof not yet implemented');
+    fetchBakSofJobs(req, res);
   });
 
   // get list of all Bakersfield webdev jobs available on CList
