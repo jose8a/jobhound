@@ -9,12 +9,12 @@
 // '/clist-local/fre-web'     -- Returns all the job listings from Jobspresso
 //
 // =================================================================
-// --- let fetchBakEngJobs = require("../parsers/clist-local/bak-eng");
-// --- let fetchBakSofJobs = require("../parsers/clist-local/bak-sof");
-// --- let fetchBakWebJobs = require("../parsers/clist-local/bak-web");
-// --- let fetchFreEngJobs = require("../parsers/clist-local/fre-eng");
-// --- let fetchFreSofJobs = require("../parsers/clist-local/fre-sof");
-// --- let fetchFreWebJobs = require("../parsers/clist-local/fre-web");
+let fetchBakEngJobs = require("../parsers/remote/clist-bak-eng");
+// --- let fetchBakSofJobs = require("../parsers/clist-local/clist-bak-sof");
+// --- let fetchBakWebJobs = require("../parsers/clist-local/clist-bak-web");
+// --- let fetchFreEngJobs = require("../parsers/clist-local/clist-fre-eng");
+// --- let fetchFreSofJobs = require("../parsers/clist-local/clist-fre-sof");
+// --- let fetchFreWebJobs = require("../parsers/clist-local/clist-fre-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -32,8 +32,8 @@ module.exports = function(router) {
   // get list of all Bakersfield engineering jobs available on CList
   router.get('/bak-eng', (req, res, next) => {
     console.log("CList Bakersfield Eng Jobs - path: '/clist-local/bak-eng'");
-    res.status(200).send('TODO: Endpoint clist-local/bak-eng not yet implemented');
-    // --- fetchBakEngJobs(req, res);
+    // --- res.status(200).send('TODO: Endpoint clist-local/bak-eng not yet implemented');
+    fetchBakEngJobs(req, res);
   });
 
   // get list of all Bakersfield software jobs available on CList
