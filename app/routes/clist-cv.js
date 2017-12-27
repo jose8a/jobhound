@@ -14,7 +14,7 @@ let fetchBakSofJobs = require("../parsers/remote/clist-bak-sof");
 let fetchBakWebJobs = require("../parsers/remote/clist-bak-web");
 let fetchFreEngJobs = require("../parsers/remote/clist-fre-eng");
 let fetchFreSofJobs = require("../parsers/remote/clist-fre-sof");
-// --- let fetchFreWebJobs = require("../parsers/clist-local/clist-fre-web");
+let fetchFreWebJobs = require("../parsers/remote/clist-fre-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -56,15 +56,12 @@ module.exports = function(router) {
   // get list of all Fresno software jobs available on CList
   router.get('/fre-sof', (req, res, next) => {
     console.log("CList Fresno SW Jobs - path: '/clist-local/fre-sof'");
-    // --- res.status(200).send('TODO: Endpoint clist-local/fre-sof not yet implemented');
     fetchFreSofJobs(req, res);
   });
 
   // get list of all Fresno webdev jobs available on CList
   router.get('/fre-web', (req, res, next) => {
     console.log("CList Fresno Web Jobs - path: '/clist-local/fre-web'");
-    res.status(200).send('TODO: Endpoint clist-local/fre-web not yet implemented');
-    // --- fetchFreWebJobs(req, res);
+    fetchFreWebJobs(req, res);
   });
-
 };
