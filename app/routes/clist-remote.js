@@ -19,6 +19,8 @@
 //
 // =================================================================
 let fetchCLRemoteLAEngJobs = require("../parsers/remote/clist-rem-la-eng");
+let fetchCLRemoteLASofJobs = require("../parsers/remote/clist-rem-la-sof");
+let fetchCLRemoteLAWebJobs = require("../parsers/remote/clist-rem-la-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -36,21 +38,18 @@ module.exports = function(router) {
   // get list of all Remote LA engineering jobs available on CList
   router.get('/la-eng', (req, res, next) => {
     console.log("CList Remote LA Eng Jobs - path: '/clist-remote/la-eng'");
-    // --- res.status(200).send('TODO: Endpoint clist-remote/la-eng not yet implemented');
     fetchCLRemoteLAEngJobs(req, res);
   });
 
   // get list of all Remote LA software jobs available on CList
   router.get('/la-sof', (req, res, next) => {
     console.log("CList Remote LA SW Jobs - path: '/clist-remote/la-sof'");
-    res.status(200).send('TODO: Endpoint clist-remote/la-sof not yet implemented');
-    // --- fetchLARemoteSofJobs(req, res);
+    fetchCLRemoteLASofJobs(req, res);
   });
 
   // get list of all Remote LA webdev jobs available on CList
   router.get('/la-web', (req, res, next) => {
     console.log("CList Remote LA Web Jobs - path: '/clist-remote/la-web'");
-    res.status(200).send('TODO: Endpoint clist-remote/la-web not yet implemented');
-    // --- fetchLARemoteWebJobs(req, res);
+    fetchCLRemoteLAWebJobs(req, res);
   });
 };
