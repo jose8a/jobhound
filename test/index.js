@@ -4,6 +4,9 @@ let supertest = require('supertest');
 
 let testCLRemotesLA = require('./clist-remotes/test-la');
 let testCLRemotesOC = require('./clist-remotes/test-oc');
+let testCLRemotesSD = require('./clist-remotes/test-sd');
+let testCLRemotesSAC = require('./clist-remotes/test-sac');
+let testCLRemotesSFBAY = require('./clist-remotes/test-sfbay');
 
 let api = supertest('http://localhost:4500');
 
@@ -21,3 +24,6 @@ describe('Home', function() {
 
 testCLRemotesLA(api);
 testCLRemotesOC(api);
+testCLRemotesSD(api);
+testCLRemotesSAC(api);
+testCLRemotesSFBAY(api);
