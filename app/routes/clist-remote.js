@@ -21,6 +21,9 @@
 let fetchCLRemoteLAEngJobs = require("../parsers/remote/clist-rem-la-eng");
 let fetchCLRemoteLASofJobs = require("../parsers/remote/clist-rem-la-sof");
 let fetchCLRemoteLAWebJobs = require("../parsers/remote/clist-rem-la-web");
+let fetchCLRemoteOCEngJobs = require("../parsers/remote/clist-rem-oc-eng");
+let fetchCLRemoteOCSofJobs = require("../parsers/remote/clist-rem-oc-sof");
+let fetchCLRemoteOCWebJobs = require("../parsers/remote/clist-rem-oc-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -51,5 +54,23 @@ module.exports = function(router) {
   router.get('/la-web', (req, res, next) => {
     console.log("CList Remote LA Web Jobs - path: '/clist-remote/la-web'");
     fetchCLRemoteLAWebJobs(req, res);
+  });
+
+  // get list of all Remote OC engineering jobs available on CList
+  router.get('/oc-eng', (req, res, next) => {
+    console.log("CList Remote OC Eng Jobs - path: '/clist-remote/oc-eng'");
+    fetchCLRemoteOCEngJobs(req, res);
+  });
+
+  // get list of all Remote OC software jobs available on CList
+  router.get('/oc-sof', (req, res, next) => {
+    console.log("CList Remote OC SW Jobs - path: '/clist-remote/oc-sof'");
+    fetchCLRemoteOCSofJobs(req, res);
+  });
+
+  // get list of all Remote OC webdev jobs available on CList
+  router.get('/oc-web', (req, res, next) => {
+    console.log("CList Remote OC Web Jobs - path: '/clist-remote/oc-web'");
+    fetchCLRemoteOCWebJobs(req, res);
   });
 };
