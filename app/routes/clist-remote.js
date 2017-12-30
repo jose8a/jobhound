@@ -18,7 +18,7 @@
 // '/clist-remote/sf-web'     -- Returns WEB CL remote job listings for SF area
 //
 // =================================================================
-// let fetchLARemoteEngJobs = require("../parsers/remote/clist-rem-la-eng");
+let fetchCLRemoteLAEngJobs = require("../parsers/remote/clist-rem-la-eng");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -36,8 +36,8 @@ module.exports = function(router) {
   // get list of all Remote LA engineering jobs available on CList
   router.get('/la-eng', (req, res, next) => {
     console.log("CList Remote LA Eng Jobs - path: '/clist-remote/la-eng'");
-    res.status(200).send('TODO: Endpoint clist-remote/la-eng not yet implemented');
-    // --- fetchLARemoteEngJobs(req, res);
+    // --- res.status(200).send('TODO: Endpoint clist-remote/la-eng not yet implemented');
+    fetchCLRemoteLAEngJobs(req, res);
   });
 
   // get list of all Remote LA software jobs available on CList
