@@ -73,4 +73,67 @@ module.exports = function(router) {
     console.log("CList Remote OC Web Jobs - path: '/clist-remote/oc-web'");
     fetchCLRemoteOCWebJobs(req, res);
   });
+
+  // get list of all Remote Sac engineering jobs available on CList
+  router.get('/sac-eng', (req, res, next) => {
+    console.log("CList Remote Sac Eng Jobs - path: '/clist-remote/sac-eng'");
+    res.status(204).end();
+    // --- fetchCLRemoteSacEngJobs(req, res);
+  });
+
+  // get list of all Remote Sac software jobs available on CList
+  router.get('/sac-sof', (req, res, next) => {
+    console.log("CList Remote Sac SW Jobs - path: '/clist-remote/sac-sof'");
+    res.status(204).end();
+    // --- fetchCLRemoteSacSofJobs(req, res);
+  });
+
+  // get list of all Remote Sac webdev jobs available on CList
+  router.get('/sac-web', (req, res, next) => {
+    console.log("CList Remote Sac Web Jobs - path: '/clist-remote/sac-web'");
+    res.status(204).end();
+    // --- fetchCLRemoteSacWebJobs(req, res);
+  });
+
+  // get list of all Remote SD engineering jobs available on CList
+  router.get('/sd-eng', (req, res, next) => {
+    console.log("CList Remote SD Eng Jobs - path: '/clist-remote/sd-eng'");
+    res.status(204).end();
+    // --- fetchCLRemoteSDEngJobs(req, res);
+  });
+
+  // get list of all Remote SD software jobs available on CList
+  router.get('/sd-sof', (req, res, next) => {
+    console.log("CList Remote SD SW Jobs - path: '/clist-remote/sd-sof'");
+    res.status(204).end();
+    // --- fetchCLRemoteSDSofJobs(req, res);
+  });
+
+  // get list of all Remote SD webdev jobs available on CList
+  router.get('/sd-web', (req, res, next) => {
+    console.log("CList Remote SD Web Jobs - path: '/clist-remote/sd-web'");
+    res.status(204).end();
+    // --- fetchCLRemoteSDWebJobs(req, res);
+  });
+
+  // get list of all Remote SFBAY engineering jobs available on CList
+  router.get('/sfbay-eng', (req, res, next) => {
+    console.log("CList Remote SFBAY Eng Jobs - path: '/clist-remote/sfbay-eng'");
+    res.status(204).end();
+    // --- fetchCLRemoteSFBAYEngJobs(req, res);
+  });
+
+  // get list of all Remote SFBAY software jobs available on CList
+  router.get('/sfbay-sof', (req, res, next) => {
+    console.log("CList Remote SFBAY SW Jobs - path: '/clist-remote/sfbay-sof'");
+    res.status(204).end();
+    // --- fetchCLRemoteSFBAYSofJobs(req, res);
+  });
+
+  // get list of all Remote SFBAY webdev jobs available on CList
+  router.get('/sfbay-web', (req, res, next) => {
+    console.log("CList Remote SFBAY Web Jobs - path: '/clist-remote/sfbay-web'");
+    res.status(204).end();
+    // --- fetchCLRemoteSFBAYWebJobs(req, res);
+  });
 };
