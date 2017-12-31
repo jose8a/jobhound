@@ -128,8 +128,7 @@ module.exports = function(router) {
   // get list of all Remote SFBAY software jobs available on CList
   router.get('/sfbay-sof', (req, res, next) => {
     console.log("CList Remote SFBAY SW Jobs - path: '/clist-remote/sfbay-sof'");
-    res.status(204).end();
-    // --- fetchCLRemoteSFBaySofJobs(req, res);
+    fetchCLRemoteSFBaySofJobs(req, res);
   });
 
   // get list of all Remote SFBAY webdev jobs available on CList
