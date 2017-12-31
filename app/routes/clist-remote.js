@@ -30,6 +30,9 @@ let fetchCLRemoteSacWebJobs = require("../parsers/remote/clist-rem-sac-web");
 let fetchCLRemoteSDEngJobs = require("../parsers/remote/clist-rem-sd-eng");
 let fetchCLRemoteSDSofJobs = require("../parsers/remote/clist-rem-sd-sof");
 let fetchCLRemoteSDWebJobs = require("../parsers/remote/clist-rem-sd-web");
+let fetchCLRemoteSFBayEngJobs = require("../parsers/remote/clist-rem-sfbay-eng");
+let fetchCLRemoteSFBaySofJobs = require("../parsers/remote/clist-rem-sfbay-sof");
+let fetchCLRemoteSFBayWebJobs = require("../parsers/remote/clist-rem-sfbay-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -119,21 +122,20 @@ module.exports = function(router) {
   // get list of all Remote SFBAY engineering jobs available on CList
   router.get('/sfbay-eng', (req, res, next) => {
     console.log("CList Remote SFBAY Eng Jobs - path: '/clist-remote/sfbay-eng'");
-    res.status(204).end();
-    // --- fetchCLRemoteSFBAYEngJobs(req, res);
+    fetchCLRemoteSFBayEngJobs(req, res);
   });
 
   // get list of all Remote SFBAY software jobs available on CList
   router.get('/sfbay-sof', (req, res, next) => {
     console.log("CList Remote SFBAY SW Jobs - path: '/clist-remote/sfbay-sof'");
     res.status(204).end();
-    // --- fetchCLRemoteSFBAYSofJobs(req, res);
+    // --- fetchCLRemoteSFBaySofJobs(req, res);
   });
 
   // get list of all Remote SFBAY webdev jobs available on CList
   router.get('/sfbay-web', (req, res, next) => {
     console.log("CList Remote SFBAY Web Jobs - path: '/clist-remote/sfbay-web'");
     res.status(204).end();
-    // --- fetchCLRemoteSFBAYWebJobs(req, res);
+    // --- fetchCLRemoteSFBayWebJobs(req, res);
   });
 };
