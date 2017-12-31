@@ -113,8 +113,7 @@ module.exports = function(router) {
   // get list of all Remote SD webdev jobs available on CList
   router.get('/sd-web', (req, res, next) => {
     console.log("CList Remote SD Web Jobs - path: '/clist-remote/sd-web'");
-    res.status(204).end();
-    // --- fetchCLRemoteSDWebJobs(req, res);
+    fetchCLRemoteSDWebJobs(req, res);
   });
 
   // get list of all Remote SFBAY engineering jobs available on CList
