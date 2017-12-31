@@ -92,8 +92,7 @@ module.exports = function(router) {
   // get list of all Remote Sac webdev jobs available on CList
   router.get('/sac-web', (req, res, next) => {
     console.log("CList Remote Sac Web Jobs - path: '/clist-remote/sac-web'");
-    res.status(204).end();
-    // --- fetchCLRemoteSacWebJobs(req, res);
+    fetchCLRemoteSacWebJobs(req, res);
   });
 
   // get list of all Remote SD engineering jobs available on CList
