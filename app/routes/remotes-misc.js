@@ -13,7 +13,7 @@ let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
 let fetchWWRCustJobs = require("../parsers/remote/wwr-cust");
 // --- let fetchWFHJobs = require("../parsers/remote/wfh");
 let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
-// --- let fetchGHubJobs = require("../parsers/remote/ghub-rem");
+let fetchGHRemoteJobs = require("../parsers/remote/ghub-rem");
 // --- let fetchSpressoJobs = require("../parsers/remote/spresso");
 
 module.exports = function(router) {
@@ -26,7 +26,7 @@ module.exports = function(router) {
   // get list of all available tech sources
   router.get('/list', (req, res, next) => {
     console.log("ALL NON-CL REMOTE SOURCES - path: '/remote/list'");
-    res.status(200).json({sources: ['sov', 'wwr', 'wfh', 'ghub', 'spresso']});
+    res.status(200).json({sources: ['sov-js', 'wwr-cust', 'wwr-prog', 'wfh', 'gh-rem', 'spresso']});
   });
 
   // get list of all remote javascript jobs available on Stack Overflow
@@ -44,7 +44,6 @@ module.exports = function(router) {
   // get list of all remote customer-support-jobs available on WWR
   router.get('/wwr-cust', (req, res, next) => {
     console.log("WWR Jobs- path: '/remote/wwr-cust'");
-    // --- res.status(200).send('TODO: Endpoint remote/wwr-cust not yet implemented');
     fetchWWRCustJobs(req, res);
   });
 
@@ -56,10 +55,9 @@ module.exports = function(router) {
   });
 
   // get list of all remote jobs available on Github
-  router.get('/ghub', (req, res, next) => {
-    console.log("Github Remote Jobs - path: '/remote/ghub'");
-    res.status(200).send('TODO: Endpoint remote/ghub not yet implemented');
-    // --- fetchGHubJobs(req, res);
+  router.get('/gh-rem', (req, res, next) => {
+    console.log("Github Remote Jobs - path: '/remote/gh-rem'");
+    fetchGHRemoteJobs(req, res);
   });
 
   // get list of all remote jobs available on Jobspresso
