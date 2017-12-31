@@ -32,15 +32,13 @@ module.exports = function(router) {
   // get list of all remote javascript jobs available on Stack Overflow
   router.get('/sov-js', (req, res, next) => {
     console.log("Stack Overflow Jobs - path: '/remote/sov-js'");
-    // --- res.status(200).send('TODO: Endpoint remote/sov-js not yet implemented');
     fetchSOVJSJobs(req, res);
   });
 
   // get list of all remote programming-jobs available on WWR
   router.get('/wwr-prog', (req, res, next) => {
     console.log("WWR Jobs- path: '/remote/wwr-prog'");
-    res.status(200).send('TODO: Endpoint remote/wwr-prog not yet implemented');
-    // --- fetchWWRProgJobs(req, res);
+    fetchWWRProgJobs(req, res);
   });
 
   // get list of all remote customer-support-jobs available on WWR
