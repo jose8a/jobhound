@@ -24,6 +24,9 @@ let fetchCLRemoteLAWebJobs = require("../parsers/remote/clist-rem-la-web");
 let fetchCLRemoteOCEngJobs = require("../parsers/remote/clist-rem-oc-eng");
 let fetchCLRemoteOCSofJobs = require("../parsers/remote/clist-rem-oc-sof");
 let fetchCLRemoteOCWebJobs = require("../parsers/remote/clist-rem-oc-web");
+let fetchCLRemoteSacEngJobs = require("../parsers/remote/clist-rem-sac-eng");
+let fetchCLRemoteSacSofJobs = require("../parsers/remote/clist-rem-sac-sof");
+let fetchCLRemoteSacWebJobs = require("../parsers/remote/clist-rem-sac-web");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -77,8 +80,8 @@ module.exports = function(router) {
   // get list of all Remote Sac engineering jobs available on CList
   router.get('/sac-eng', (req, res, next) => {
     console.log("CList Remote Sac Eng Jobs - path: '/clist-remote/sac-eng'");
-    res.status(204).end();
-    // --- fetchCLRemoteSacEngJobs(req, res);
+    // --- res.status(204).end();
+    fetchCLRemoteSacEngJobs(req, res);
   });
 
   // get list of all Remote Sac software jobs available on CList
