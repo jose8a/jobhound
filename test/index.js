@@ -7,6 +7,7 @@ let testCLRemotesOC = require('./clist-remotes/test-oc');
 let testCLRemotesSD = require('./clist-remotes/test-sd');
 let testCLRemotesSAC = require('./clist-remotes/test-sac');
 let testCLRemotesSFBAY = require('./clist-remotes/test-sfbay');
+let testWWR = require('./remotes-misc/test-wwr');
 
 let api = supertest('http://localhost:4500');
 
@@ -27,3 +28,4 @@ testCLRemotesOC(api);
 testCLRemotesSD(api);
 testCLRemotesSAC(api);
 testCLRemotesSFBAY(api);
+testWWR(api);
