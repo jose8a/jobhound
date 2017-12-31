@@ -1,6 +1,6 @@
 let format = require('date-fns/format');
 
-let clistUrl = "https://sacramento.craigslist.org/search/eng?is_telecommuting=1";
+let clistUrl = "https://sacramento.craigslist.org/search/sof?is_telecommuting=1";
 let request = require('request');
 let newsItemParser = require('../newsItemParser');
 let collectionParser = require('../siteParser')
@@ -12,7 +12,7 @@ let parserOptions = {
 };
 
 let jobProperties = {
-  siteCategory: "clist-eng",
+  siteCategory: "clist-sof",
   source: "clist",
   sourceType: "primary-source",
   baseUrl: "https://sacramento.craigslist.org",
@@ -28,8 +28,8 @@ let jobProperties = {
   isTemp: ""
 };
 
-// 1. create clist-rem-sac-eng-specific properties parser
-let clistRemoteSacEngPropertiesExtractor = {
+// 1. create clist-rem-sac-sof-specific properties parser
+let clistRemoteSacSofPropertiesExtractor = {
   extractTitle: function(itemContainer, linkItem) {
     return linkItem.text().trim();
   },
@@ -47,30 +47,30 @@ let clistRemoteSacEngPropertiesExtractor = {
   }
 }
 
-// 2. create a clistRemoteSacEngItemParser from the generic newsItemParser in
-//    order to assign clist-rem-sac-eng-specific properties to it
-let clistRemoteSacEngItemParser = Object.create(newsItemParser);
-clistRemoteSacEngItemParser.init(parserOptions, jobProperties);
+// 2. create a clistRemoteSacSofItemParser from the generic newsItemParser in
+//    order to assign clist-rem-sac-sof-specific properties to it
+let clistRemoteSacSofItemParser = Object.create(newsItemParser);
+clistRemoteSacSofItemParser.init(parserOptions, jobProperties);
 
-// 3. merge both objects into the clistRemoteSacEngItemParser object using
+// 3. merge both objects into the clistRemoteSacSofItemParser object using
 //    Object.assign(..)
-clistRemoteSacEngItemParser = Object.assign(clistRemoteSacEngItemParser, clistRemoteSacEngPropertiesExtractor)
+clistRemoteSacSofItemParser = Object.assign(clistRemoteSacSofItemParser, clistRemoteSacSofPropertiesExtractor)
 
-// 4. create a clistRemoteSacEngSiteParser to handle and orchestrate the actual parsing
+// 4. create a clistRemoteSacSofSiteParser to handle and orchestrate the actual parsing
 //    on the site
-let clistRemoteSacEngSiteParser = Object.create(collectionParser);
+let clistRemoteSacSofSiteParser = Object.create(collectionParser);
 
 // 5. use the parser in conjunction with cheerio and request/request to
 //    retrieve stories from the site
-let fetchCLRemoteSacEngJobs = function(req, res) {
+let fetchCLRemoteSacSofJobs = function(req, res) {
   request(clistUrl, function (error, response, html) {
     if (!error && response.statusCode == 200) {
-      clistRemoteSacEngSiteParser.init(html, clistRemoteSacEngItemParser);
-      clistRemoteSacEngSiteParser.parseCollection();
+      clistRemoteSacSofSiteParser.init(html, clistRemoteSacSofItemParser);
+      clistRemoteSacSofSiteParser.parseCollection();
 
-      res.status(200).json(clistRemoteSacEngSiteParser.getParsedItems());
+      res.status(200).json(clistRemoteSacSofSiteParser.getParsedItems());
     }
   });
 };
 
-module.exports = fetchCLRemoteSacEngJobs;
+module.exports = fetchCLRemoteSacSofJobs;

@@ -80,15 +80,13 @@ module.exports = function(router) {
   // get list of all Remote Sac engineering jobs available on CList
   router.get('/sac-eng', (req, res, next) => {
     console.log("CList Remote Sac Eng Jobs - path: '/clist-remote/sac-eng'");
-    // --- res.status(204).end();
     fetchCLRemoteSacEngJobs(req, res);
   });
 
   // get list of all Remote Sac software jobs available on CList
   router.get('/sac-sof', (req, res, next) => {
     console.log("CList Remote Sac SW Jobs - path: '/clist-remote/sac-sof'");
-    res.status(204).end();
-    // --- fetchCLRemoteSacSofJobs(req, res);
+    fetchCLRemoteSacSofJobs(req, res);
   });
 
   // get list of all Remote Sac webdev jobs available on CList
