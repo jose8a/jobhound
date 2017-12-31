@@ -107,8 +107,7 @@ module.exports = function(router) {
   // get list of all Remote SD software jobs available on CList
   router.get('/sd-sof', (req, res, next) => {
     console.log("CList Remote SD SW Jobs - path: '/clist-remote/sd-sof'");
-    res.status(204).end();
-    // --- fetchCLRemoteSDSofJobs(req, res);
+    fetchCLRemoteSDSofJobs(req, res);
   });
 
   // get list of all Remote SD webdev jobs available on CList
