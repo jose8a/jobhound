@@ -10,6 +10,7 @@ let testCLRemotesSFBAY = require('./clist-remotes/test-sfbay');
 let testWWR = require('./remotes-misc/test-wwr');
 let testSOV = require('./remotes-misc/test-sov');
 let testGH = require('./remotes-misc/test-gh');
+let testJSP = require('./remotes-misc/test-jsp');
 
 let api = supertest('http://localhost:4500');
 
@@ -25,11 +26,12 @@ describe('Home', function() {
   });
 });
 
-testCLRemotesLA(api);
-testCLRemotesOC(api);
-testCLRemotesSD(api);
-testCLRemotesSAC(api);
-testCLRemotesSFBAY(api);
+// --- testCLRemotesLA(api);
+// --- testCLRemotesOC(api);
+// --- testCLRemotesSD(api);
+// --- testCLRemotesSAC(api);
+// --- testCLRemotesSFBAY(api);
 testWWR(api);
 testSOV(api);
 testGH(api);
+testJSP(api);
