@@ -11,11 +11,10 @@
 // =================================================================
 let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
 let fetchWWRCustJobs = require("../parsers/remote/wwr-cust");
-// --- let fetchWFHSofJobs = require("../parsers/remote/wfh-sof");
+let fetchWFHSofJobs = require("../parsers/remote/wfh-sof");
 // --- let fetchWFHAllJobs = require("../parsers/remote/wfh-all");
 let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
 let fetchGHRemoteJobs = require("../parsers/remote/ghub-rem");
-// --- let fetchJSPJobs = require("../parsers/remote/jsp-ajax");
 let fetchJSPJobs = require("../parsers/remote/jsp");
 
 module.exports = function(router) {
@@ -52,8 +51,7 @@ module.exports = function(router) {
   // get list of all remote Software jobs available on WFH
   router.get('/wfh-sof', (req, res, next) => {
     console.log("WFH Jobs - path: '/remote/wfh-sof'");
-    res.status(204).end();
-    // --- fetchWFHSofJobs(req, res);
+    fetchWFHSofJobs(req, res);
   });
 
   // get list of all remote jobs available on WFH
@@ -72,7 +70,6 @@ module.exports = function(router) {
   // get list of all remote jobs available on Jobspresso
   router.get('/jsp', (req, res, next) => {
     console.log("Jobspresso Jobs - path: '/remote/jsp'");
-    // --- res.status(204).end();
     fetchJSPJobs(req, res);
   });
 };
