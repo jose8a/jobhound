@@ -16,7 +16,7 @@ let fetchWWRCustJobs = require("../parsers/remote/wwr-cust");
 let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
 let fetchGHRemoteJobs = require("../parsers/remote/ghub-rem");
 // --- let fetchJSPJobs = require("../parsers/remote/jsp-ajax");
-// --- let fetchJSPJobs = require("../parsers/remote/jsp");
+let fetchJSPJobs = require("../parsers/remote/jsp");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -72,7 +72,7 @@ module.exports = function(router) {
   // get list of all remote jobs available on Jobspresso
   router.get('/jsp', (req, res, next) => {
     console.log("Jobspresso Jobs - path: '/remote/jsp'");
-    res.status(204).end();
-    // --- fetchJSPJobs(req, res);
+    // --- res.status(204).end();
+    fetchJSPJobs(req, res);
   });
 };
