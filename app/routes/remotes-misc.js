@@ -11,10 +11,12 @@
 // =================================================================
 let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
 let fetchWWRCustJobs = require("../parsers/remote/wwr-cust");
-// --- let fetchWFHJobs = require("../parsers/remote/wfh");
+// --- let fetchWFHSofJobs = require("../parsers/remote/wfh-sof");
+// --- let fetchWFHAllJobs = require("../parsers/remote/wfh-all");
 let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
 let fetchGHRemoteJobs = require("../parsers/remote/ghub-rem");
-// --- let fetchSpressoJobs = require("../parsers/remote/spresso");
+// --- let fetchJSPJobs = require("../parsers/remote/jsp-ajax");
+// --- let fetchJSPJobs = require("../parsers/remote/jsp");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -26,7 +28,7 @@ module.exports = function(router) {
   // get list of all available tech sources
   router.get('/list', (req, res, next) => {
     console.log("ALL NON-CL REMOTE SOURCES - path: '/remote/list'");
-    res.status(200).json({sources: ['sov-js', 'wwr-cust', 'wwr-prog', 'wfh', 'gh-rem', 'spresso']});
+    res.status(200).json({sources: ['sov-js', 'wwr-cust', 'wwr-prog', 'wfh-all', 'wfh-sof', 'gh-rem', 'jsp']});
   });
 
   // get list of all remote javascript jobs available on Stack Overflow
@@ -47,11 +49,18 @@ module.exports = function(router) {
     fetchWWRCustJobs(req, res);
   });
 
+  // get list of all remote Software jobs available on WFH
+  router.get('/wfh-sof', (req, res, next) => {
+    console.log("WFH Jobs - path: '/remote/wfh-sof'");
+    res.status(204).end();
+    // --- fetchWFHSofJobs(req, res);
+  });
+
   // get list of all remote jobs available on WFH
-  router.get('/wfh', (req, res, next) => {
-    console.log("WFH Jobs - path: '/remote/wfh'");
-    res.status(200).send('TODO: Endpoint remote/wfh not yet implemented');
-    // --- fetchWFHJobs(req, res);
+  router.get('/wfh-all', (req, res, next) => {
+    console.log("WFH Jobs - path: '/remote/wfh-all'");
+    res.status(204).end();
+    // --- fetchWFHAllJobs(req, res);
   });
 
   // get list of all remote jobs available on Github
@@ -61,9 +70,9 @@ module.exports = function(router) {
   });
 
   // get list of all remote jobs available on Jobspresso
-  router.get('/spresso', (req, res, next) => {
-    console.log("Jobspresso Jobs - path: '/remote/spresso'");
-    res.status(200).send('TODO: Endpoint remote/spresso not yet implemented');
-    // --- fetchSpressoJobs(req, res);
+  router.get('/jsp', (req, res, next) => {
+    console.log("Jobspresso Jobs - path: '/remote/jsp'");
+    res.status(204).end();
+    // --- fetchJSPJobs(req, res);
   });
 };
