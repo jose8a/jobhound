@@ -2,6 +2,8 @@ let should = require('chai').should();
 let expect = require('chai').expect;
 let supertest = require('supertest');
 
+let testCLLocalFRE = require('./clist-remotes/test-fre');
+let testCLLocalBAK = require('./clist-remotes/test-bak');
 let testCLRemotesLA = require('./clist-remotes/test-la');
 let testCLRemotesOC = require('./clist-remotes/test-oc');
 let testCLRemotesSD = require('./clist-remotes/test-sd');
@@ -27,6 +29,8 @@ describe('Home', function() {
   });
 });
 
+testCLLocalFRE(api);
+testCLLocalBAK(api);
 testCLRemotesLA(api);
 testCLRemotesOC(api);
 testCLRemotesSD(api);
