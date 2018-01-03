@@ -29,6 +29,12 @@ NewsItemParser = {
     }
 
     if (this.linkType === 'inner') {
+      // if linkSelector is not found within itemContainer, skip the
+      // current list item.
+      if (!urlAnchor.attr("href")) {
+        return null;
+      }
+
       return itemContainer.find(linkSelector);
     }
 
