@@ -1,6 +1,6 @@
 'use strict';
 
-let wfh = "https://www.wfh.io/categories/1-remote-software-development/jobs"
+let wfh = "https://www.wfh.io/latest-remote-jobs"
 let request = require('request');
 let newsItemParser = require('../newsItemParser');
 let collectionParser = require('../siteParser')
@@ -12,7 +12,7 @@ let parserOptions = {
 };
 
 let jobProperties = {
-  siteCategory: "wfh-software",
+  siteCategory: "wfh-all",
   source: "wfh",
   sourceType: "primary-source",
   baseUrl: "https://www.wfh.io",
@@ -28,8 +28,8 @@ let jobProperties = {
   isTemp: ""
 };
 
-// 1. create wfh-sof-specific properties parser
-let wfhSofPropertiesExtractor = {
+// 1. create wfh-all-specific properties parser
+let wfhAllPropertiesExtractor = {
   extractTitle: function(itemContainer, linkItem) {
     return linkItem.text().trim();
   },
@@ -49,28 +49,28 @@ let wfhSofPropertiesExtractor = {
   }
 }
 
-// 2. create a wfhSofItemParser from the generic newsItemParser in
-//    order to assign wfh-sof-specific properties to it
-let wfhSofItemParser = Object.create(newsItemParser);
-wfhSofItemParser.init(parserOptions, jobProperties);
+// 2. create a wfhAllItemParser from the generic newsItemParser in
+//    order to assign wfh-all-specific properties to it
+let wfhAllItemParser = Object.create(newsItemParser);
+wfhAllItemParser.init(parserOptions, jobProperties);
 
-// 3. merge both objects into the wfhSofItemParser object using
+// 3. merge both objects into the wfhAllItemParser object using
 //    Object.assign(..)
-wfhSofItemParser = Object.assign(wfhSofItemParser, wfhSofPropertiesExtractor)
+wfhAllItemParser = Object.assign(wfhAllItemParser, wfhAllPropertiesExtractor)
 
-// 4. create a wfhSofSiteParser to handle and orchestrate the actual parsing
+// 4. create a wfhAllSiteParser to handle and orchestrate the actual parsing
 //    on the site
-let wfhSofSiteParser = Object.create(collectionParser);
+let wfhAllSiteParser = Object.create(collectionParser);
 
 // 5. use the parser in conjunction with cheerio and request/request to
 //    retrieve stories from the site
 let fetchWFHJobs = function(req, res) {
   request(wfh, function (error, response, html) {
     if (!error && response.statusCode == 200) {
-      wfhSofSiteParser.init(html, wfhSofItemParser);
-      wfhSofSiteParser.parseCollection();
+      wfhAllSiteParser.init(html, wfhAllItemParser);
+      wfhAllSiteParser.parseCollection();
 
-      res.status(200).json(wfhSofSiteParser.getParsedItems());
+      res.status(200).json(wfhAllSiteParser.getParsedItems());
     }
   });
 };
