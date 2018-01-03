@@ -1,5 +1,8 @@
 'use strict';
 
+// TODO: pages 1, 2, and maybe 3 should all be fetched to provide listings
+//      for this module
+
 // --- let jsp = "https://jobspresso.co/remote-work/"
 let jsp = "https://jobspresso.co/jm-ajax/get_listings/";
 let request = require('request');
