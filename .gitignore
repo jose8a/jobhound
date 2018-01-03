@@ -11,6 +11,7 @@ client/
 dodos/
 *.sqlite
 todo-*
+experimental/
 
 # The rest added/adapted from: https://www.gitignore.io/api/node
 ### Node ###
