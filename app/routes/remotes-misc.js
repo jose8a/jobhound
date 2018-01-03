@@ -3,10 +3,11 @@
 // '/remote/list'         -- Returns a list of the available tech news sources available via the API
 // '/remote/wwr-prog'     -- Returns all the job listings from WWR 'Programmer' category page
 // '/remote/wwr-cust'     -- Returns all the job listings from WWR 'Customer Support' category page
-// '/remote/wfh'          -- Returns all the job listings from WFH
-// '/remote/sov'          -- Returns all the job listings from Stack Overflow remotes
-// '/remote/ghub'         -- Returns all the job listings from Github remote listings
-// '/remote/spresso'      -- Returns all the job listings from Jobspresso
+// '/remote/wfh-sof'      -- Returns all the job listings from WFH 'Software' section
+// '/remote/wfh-all'      -- Returns all the job listings from WFH
+// '/remote/sov-js'       -- Returns all the job listings from Stack Overflow JS remotes
+// '/remote/gh-rem'       -- Returns all the job listings from Github remote listings
+// '/remote/jsp'          -- Returns all the job listings from Jobspresso
 //
 // =================================================================
 let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
