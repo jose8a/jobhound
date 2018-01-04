@@ -80,7 +80,7 @@ module.exports = function(router) {
   // get list of all remote jobs available on AuthenticJobs
   router.get('/auth', (req, res, next) => {
     console.log("Authentic Jobs - path: '/remote/auth'");
-    fetctAuthJobs(req, res);
+    fetchAuthJobs(req, res);
   });
 
   // get list of all remote jobs available on Vuejobs
