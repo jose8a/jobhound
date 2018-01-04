@@ -8,6 +8,8 @@
 // '/remote/sov-js'       -- Returns all the job listings from Stack Overflow JS remotes
 // '/remote/gh-rem'       -- Returns all the job listings from Github remote listings
 // '/remote/jsp'          -- Returns all the job listings from Jobspresso
+// '/remote/auth'         -- Returns all the job listings from AuthenticJobs
+// '/remote/vue'          -- Returns all the job listings from Vuejobs
 //
 // =================================================================
 let fetchWWRProgJobs = require("../parsers/remote/wwr-prog");
@@ -17,6 +19,8 @@ let fetchWFHAllJobs = require("../parsers/remote/wfh-all");
 let fetchSOVJSJobs = require("../parsers/remote/sov-rem");
 let fetchGHRemoteJobs = require("../parsers/remote/ghub-rem");
 let fetchJSPJobs = require("../parsers/remote/jsp");
+let fetchAuthJobs = require("../parsers/remote/auth");
+let fetchVueJobs = require("../parsers/remote/vue");
 
 module.exports = function(router) {
   // get a collection of all my available remote jobs from all sources
@@ -28,7 +32,7 @@ module.exports = function(router) {
   // get list of all available tech sources
   router.get('/list', (req, res, next) => {
     console.log("ALL NON-CL REMOTE SOURCES - path: '/remote/list'");
-    res.status(200).json({sources: ['sov-js', 'wwr-cust', 'wwr-prog', 'wfh-all', 'wfh-sof', 'gh-rem', 'jsp']});
+    res.status(200).json({sources: ['sov-js', 'wwr-cust', 'wwr-prog', 'wfh-all', 'wfh-sof', 'gh-rem', 'jsp', 'auth', 'vue']});
   });
 
   // get list of all remote javascript jobs available on Stack Overflow
@@ -71,5 +75,18 @@ module.exports = function(router) {
   router.get('/jsp', (req, res, next) => {
     console.log("Jobspresso Jobs - path: '/remote/jsp'");
     fetchJSPJobs(req, res);
+  });
+
+  // get list of all remote jobs available on AuthenticJobs
+  router.get('/auth', (req, res, next) => {
+    console.log("Authentic Jobs - path: '/remote/auth'");
+    fetctAuthJobs(req, res);
+  });
+
+  // get list of all remote jobs available on Vuejobs
+  router.get('/vue', (req, res, next) => {
+    console.log("Vue Remote Jobs - path: '/remote/vue'");
+    res.status(204).end("");
+    // --- fetchVueJobs(req, res);
   });
 };
