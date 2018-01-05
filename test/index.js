@@ -15,6 +15,7 @@ let testGH = require('./remotes-misc/test-gh');
 let testJSP = require('./remotes-misc/test-jsp');
 let testWFH = require('./remotes-misc/test-wfh');
 let testAuth = require('./remotes-misc/test-auth');
+let testVue = require('./remotes-misc/test-vue');
 
 let api = supertest('http://localhost:4500');
 
@@ -43,3 +44,4 @@ testGH(api);
 testJSP(api);
 testWFH(api);
 testAuth(api);
+testVue(api);
