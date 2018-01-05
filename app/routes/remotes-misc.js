@@ -86,7 +86,6 @@ module.exports = function(router) {
   // get list of all remote jobs available on Vuejobs
   router.get('/vue', (req, res, next) => {
     console.log("Vue Remote Jobs - path: '/remote/vue'");
-    res.status(204).end("");
-    // --- fetchVueJobs(req, res);
+    fetchVueJobs(req, res);
   });
 };
