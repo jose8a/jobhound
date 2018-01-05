@@ -2,11 +2,11 @@ let should = require('chai').should();
 let expect = require('chai').expect;
 
 function testJSP(api) {
-  describe('JSP Remote listings', function(done) {
+  describe('JSP listings', function(done) {
     let baseRoute = '/remote'
     let jspListings = baseRoute + '/jsp';
 
-    it('should get Programming listings', function(done) {
+    it('should get Remote listings', function(done) {
       this.timeout(5000);
       api.get(jspListings)
         .set('Accept', 'application/json')
